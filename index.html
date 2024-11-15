@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thilina Kavinda Silva | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom Styles */
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .gradient-bg {
+      background: linear-gradient(90deg, #3b82f6, #9333ea);
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS
+    emailjs.init('Th2xwmn4XLw8rGibS'); // Replace with your Public Key
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contactForm");
+      const formMessage = document.getElementById("formMessage");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        formMessage.textContent = "Sending...";
+        formMessage.classList.remove("hidden", "text-green-500", "text-red-500");
+        formMessage.classList.add("text-blue-500");
+
+        emailjs
+          .sendForm("service_yyny62w", "template_y5m7hyi", form) // Replace YOUR_TEMPLATE_ID with your actual template ID
+          .then(() => {
+            formMessage.textContent = "Your message has been sent successfully!";
+            formMessage.classList.remove("text-blue-500");
+            formMessage.classList.add("text-green-500");
+            form.reset();
+          })
+          .catch((error) => {
+            console.error("EmailJS Error:", error);
+            formMessage.textContent = "Failed to send the message. Please try again.";
+            formMessage.classList.remove("text-blue-500");
+            formMessage.classList.add("text-red-500");
+          });
+      });
+    });
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="gradient-bg text-white py-6 shadow-md">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+      <h1 class="text-3xl font-bold">Thilina Kavinda Silva</h1>
+      <nav class="space-x-6">
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#projects" class="hover:underline">Projects</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-20 text-center">
+    <h2 class="text-4xl font-extrabold mb-4">Hi, I'm Thilina Kavinda Silva</h2>
+    <p class="text-xl mb-6">Software Engineer | Creative Developer | Problem Solver</p>
+    <a href="#projects" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-500">
+      View My Work
+    </a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">About Me</h2>
+      <p class="text-lg leading-relaxed text-center">
+        I'm a passionate software engineer with expertise in modern web development, specializing in creating responsive and intuitive designs. I enjoy solving real-world problems through technology and constantly learning new tools to enhance my craft.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Projects</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project Card -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+          <img src="https://via.placeholder.com/400x200" alt="Project 1" class="w-full">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Project Title 1</h3>
+            <p class="text-gray-600 mb-4">A brief description of this project goes here.</p>
+            <a href="#" class="text-blue-600 hover:underline">View Project</a>
+          </div>
+        </div>
+        <!-- Add more projects similarly -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Contact Me</h2>
+      <form id="contactForm" class="max-w-xl mx-auto space-y-4">
+        <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        <textarea name="message" placeholder="Your Message" rows="5" class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+        <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-500">Send Message</button>
+        <p id="formMessage" class="text-center mt-4 hidden"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 bg-gray-800 text-white">
+    <div class="container mx-auto px-6 text-center">
+      <p>&copy; 2024 Thilina Silva. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
